@@ -9,10 +9,10 @@ parameters:
         - src
 
     checkMissingIterableValueType: true
-    checkGenericClassInNonGenericObjectType: false
     reportUnmatchedIgnoredErrors: true
 
     ignoreErrors:
+        - identifier: missingType.generics
         - "#is not allowed to extend#"
         - "#is not covered by backward compatibility promise#"
         - "#is concrete, but does not have a Test suffix.#"
