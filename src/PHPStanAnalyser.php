@@ -7,6 +7,7 @@ namespace Pest\TypeCoverage;
 use PhpParser\Node;
 use PHPStan\Analyser\Analyser;
 use PHPStan\Analyser\FileAnalyser;
+use PHPStan\Analyser\LocalIgnoresProcessor;
 use PHPStan\Analyser\NodeScopeResolver;
 use PHPStan\Analyser\RuleErrorTransformer;
 use PHPStan\Collectors\Collector;
@@ -81,7 +82,7 @@ final class PHPStanAnalyser
             $container->getService('defaultAnalysisParser'), // @phpstan-ignore-line
             $container->getByType(DependencyResolver::class),
             new RuleErrorTransformer(),
-            true
+            $container->getByType(LocalIgnoresProcessor::class),
         );
 
         return new Analyser($fileAnalyser, $ruleRegistry, $collectorRegistry, $nodeScopeResolver, 9_999_999_999_999);
