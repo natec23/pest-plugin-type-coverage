@@ -16,6 +16,7 @@ use PHPStan\Dependency\DependencyResolver;
 use PHPStan\DependencyInjection\Container;
 use PHPStan\DependencyInjection\Reflection\ClassReflectionExtensionRegistryProvider;
 use PHPStan\DependencyInjection\Type\DynamicThrowTypeExtensionProvider;
+use PHPStan\DependencyInjection\Type\ParameterClosureTypeExtensionProvider;
 use PHPStan\File\FileHelper;
 use PHPStan\Php\PhpVersion;
 use PHPStan\PhpDoc\PhpDocInheritanceResolver;
@@ -64,6 +65,7 @@ final class PHPStanAnalyser
             $typeSpecifier, // @phpstan-ignore-line
             $container->getByType(DynamicThrowTypeExtensionProvider::class),
             $container->getByType(ReadWritePropertiesExtensionProvider::class),
+            $container->getByType(ParameterClosureTypeExtensionProvider::class),
             $scopeFactory,
             false,
             true,
