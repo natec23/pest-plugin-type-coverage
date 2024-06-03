@@ -36,48 +36,13 @@ test('it can output to json', function () {
     expect(fn () => $plugin->handleArguments(['--type-coverage', '--type-coverage-json=test.json']))->toThrow(Exception::class, 0);
 
     expect(__DIR__.'/../test.json')->toBeReadableFile();
+
     expect(file_get_contents(__DIR__.'/../test.json'))->json()->toMatchArray([
         'format' => 'pest',
         'coverage-min' => 0,
         'result' => [
             [
-                'file' => 'src/PHPStanAnalyser.php',
-                'uncoveredLines' => [],
-                'uncoveredLinesIgnored' => [],
-                'percentage' => 100,
-            ],
-            [
                 'file' => 'src/TestCaseForTypeCoverage.php',
-                'uncoveredLines' => [],
-                'uncoveredLinesIgnored' => [],
-                'percentage' => 100,
-            ],
-            [
-                'file' => 'src/Contracts/Logger.php',
-                'uncoveredLines' => [],
-                'uncoveredLinesIgnored' => [],
-                'percentage' => 100,
-            ],
-            [
-                'file' => 'src/Plugin.php',
-                'uncoveredLines' => [],
-                'uncoveredLinesIgnored' => [],
-                'percentage' => 100,
-            ],
-            [
-                'file' => 'src/Result.php',
-                'uncoveredLines' => [],
-                'uncoveredLinesIgnored' => [],
-                'percentage' => 100,
-            ],
-            [
-                'file' => 'src/Error.php',
-                'uncoveredLines' => [],
-                'uncoveredLinesIgnored' => [],
-                'percentage' => 100,
-            ],
-            [
-                'file' => 'src/Support/ConfigurationSourceDetector.php',
                 'uncoveredLines' => [],
                 'uncoveredLinesIgnored' => [],
                 'percentage' => 100,
@@ -89,7 +54,19 @@ test('it can output to json', function () {
                 'percentage' => 100,
             ],
             [
-                'file' => 'src/Logging/NullLogger.php',
+                'file' => 'src/PHPStanAnalyser.php',
+                'uncoveredLines' => [],
+                'uncoveredLinesIgnored' => [],
+                'percentage' => 100,
+            ],
+            [
+                'file' => 'src/Support/ConfigurationSourceDetector.php',
+                'uncoveredLines' => [],
+                'uncoveredLinesIgnored' => [],
+                'percentage' => 100,
+            ],
+            [
+                'file' => 'src/Result.php',
                 'uncoveredLines' => [],
                 'uncoveredLinesIgnored' => [],
                 'percentage' => 100,
@@ -101,16 +78,40 @@ test('it can output to json', function () {
                 'percentage' => 100,
             ],
             [
-                'file' => 'tests/Fixtures/Properties.php',
-                'uncoveredLines' => ['pr12'],
+                'file' => 'src/Logging/NullLogger.php',
+                'uncoveredLines' => [],
+                'uncoveredLinesIgnored' => [],
+                'percentage' => 100,
+            ],
+            [
+                'file' => 'src/Contracts/Logger.php',
+                'uncoveredLines' => [],
+                'uncoveredLinesIgnored' => [],
+                'percentage' => 100,
+            ],
+            [
+                'file' => 'src/Error.php',
+                'uncoveredLines' => [],
+                'uncoveredLinesIgnored' => [],
+                'percentage' => 100,
+            ],
+            [
+                'file' => 'src/Plugin.php',
+                'uncoveredLines' => [],
+                'uncoveredLinesIgnored' => [],
+                'percentage' => 100,
+            ],
+            [
+                'file' => 'tests/Fixtures/Parameters.php',
+                'uncoveredLines' => ['pa12'],
                 'uncoveredLinesIgnored' => [],
                 'percentage' => 83,
             ],
             [
-                'file' => 'tests/Fixtures/All.php',
-                'uncoveredLines' => ['pr12', 'pa14', 'pa14', 'rt14'],
+                'file' => 'tests/Fixtures/Properties.php',
+                'uncoveredLines' => ['pr12'],
                 'uncoveredLinesIgnored' => [],
-                'percentage' => 0,
+                'percentage' => 83,
             ],
             [
                 'file' => 'tests/Fixtures/ReturnType.php',
@@ -119,10 +120,10 @@ test('it can output to json', function () {
                 'percentage' => 67,
             ],
             [
-                'file' => 'tests/Fixtures/Parameters.php',
-                'uncoveredLines' => ['pa12'],
+                'file' => 'tests/Fixtures/All.php',
+                'uncoveredLines' => ['pr12', 'pa14', 'pa14', 'rt14'],
                 'uncoveredLinesIgnored' => [],
-                'percentage' => 83,
+                'percentage' => 0,
             ],
         ],
         'total' => 88.07,
