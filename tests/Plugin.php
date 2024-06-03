@@ -36,6 +36,7 @@ test('it can output to json', function () {
     expect(fn () => $plugin->handleArguments(['--type-coverage', '--type-coverage-json=test.json']))->toThrow(Exception::class, 0);
 
     expect(__DIR__.'/../test.json')->toBeReadableFile();
+
     expect(file_get_contents(__DIR__.'/../test.json'))->json()->toMatchArray([
         'format' => 'pest',
         'coverage-min' => 0,
@@ -108,7 +109,12 @@ test('it can output to json', function () {
             ],
             [
                 'file' => 'tests/Fixtures/All.php',
-                'uncoveredLines' => ['pr12', 'pa14', 'pa14', 'rt14'],
+                'uncoveredLines' => [
+                    'pr12',
+                    'pa14',
+                    'pa14',
+                    'rt14',
+                ],
                 'uncoveredLinesIgnored' => [],
                 'percentage' => 0,
             ],
