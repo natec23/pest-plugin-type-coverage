@@ -17,6 +17,7 @@ use PHPStan\DependencyInjection\Container;
 use PHPStan\DependencyInjection\Reflection\ClassReflectionExtensionRegistryProvider;
 use PHPStan\DependencyInjection\Type\DynamicThrowTypeExtensionProvider;
 use PHPStan\DependencyInjection\Type\ParameterClosureTypeExtensionProvider;
+use PHPStan\DependencyInjection\Type\ParameterOutTypeExtensionProvider;
 use PHPStan\File\FileHelper;
 use PHPStan\Php\PhpVersion;
 use PHPStan\PhpDoc\PhpDocInheritanceResolver;
@@ -55,6 +56,7 @@ final class PHPStanAnalyser
             $container->getByType(InitializerExprTypeResolver::class),
             $container->getService('betterReflectionReflector'), // @phpstan-ignore-line
             $container->getByType(ClassReflectionExtensionRegistryProvider::class),
+            $container->getByType(ParameterOutTypeExtensionProvider::class),
             $container->getService('defaultAnalysisParser'), // @phpstan-ignore-line
             $container->getByType(FileTypeMapper::class),
             $container->getByType(StubPhpDocProvider::class),

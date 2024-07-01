@@ -102,7 +102,7 @@ final class TestCaseForTypeCoverage extends RuleTestCase
         $analyser = PHPStanAnalyser::make(self::getContainer(), $this->getRules(), $this->getCollectors());
         $analyserResult = $analyser->analyse($files, null, null, \true);
         if ($analyserResult->getInternalErrors() !== []) {
-            self::fail(implode("\n", $analyserResult->getInternalErrors()));
+            self::fail(implode("\n", $analyserResult->getInternalErrors())); // @phpstan-ignore-line
         }
 
         $actualErrors = $analyserResult->getUnorderedErrors();
