@@ -16,9 +16,11 @@ use PHPStan\Rules\DirectRegistry;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleError;
 use PHPStan\Testing\RuleTestCase;
+use TomasVotruba\TypeCoverage\Collectors\ConstantTypeDeclarationCollector;
 use TomasVotruba\TypeCoverage\Collectors\ParamTypeDeclarationCollector;
 use TomasVotruba\TypeCoverage\Collectors\PropertyTypeDeclarationCollector;
 use TomasVotruba\TypeCoverage\Collectors\ReturnTypeDeclarationCollector;
+use TomasVotruba\TypeCoverage\Rules\ConstantTypeCoverageRule;
 use TomasVotruba\TypeCoverage\Rules\ParamTypeCoverageRule;
 use TomasVotruba\TypeCoverage\Rules\PropertyTypeCoverageRule;
 use TomasVotruba\TypeCoverage\Rules\ReturnTypeCoverageRule;
@@ -79,6 +81,7 @@ final class TestCaseForTypeCoverage extends RuleTestCase
             self::getContainer()->getByType(ParamTypeDeclarationCollector::class),
             self::getContainer()->getByType(PropertyTypeDeclarationCollector::class),
             self::getContainer()->getByType(ReturnTypeDeclarationCollector::class),
+            self::getContainer()->getByType(ConstantTypeDeclarationCollector::class),
         ];
     }
 
@@ -93,6 +96,7 @@ final class TestCaseForTypeCoverage extends RuleTestCase
             TestCaseForTypeCoverage::getContainer()->getByType(ParamTypeCoverageRule::class),
             TestCaseForTypeCoverage::getContainer()->getByType(PropertyTypeCoverageRule::class),
             TestCaseForTypeCoverage::getContainer()->getByType(ReturnTypeCoverageRule::class),
+            TestCaseForTypeCoverage::getContainer()->getByType(ConstantTypeCoverageRule::class),
         ];
     }
 

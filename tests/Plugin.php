@@ -16,10 +16,11 @@ test('output', function () {
     expect(fn () => $plugin->handleArguments(['--type-coverage']))->toThrow(Exception::class, 0)
         ->and($output->fetch())->toContain(
             '.. 100%',
-            '.. pr12 83',
-            '.. pr12, pa14, pa14, rt14 0',
-            '.. rt12 67',
-            '.. pa12 83',
+            '.. pr12 87',
+            '.. co14, pr16, pa18, pa18, rt18 12',
+            '.. co14 87',
+            '.. rt12 75',
+            '.. pa12 87',
         );
 });
 
@@ -73,9 +74,14 @@ test('it can output to json', function () {
             ],
             [
                 'file' => 'src/Error.php',
-                'uncoveredLines' => [],
+                'uncoveredLines' => [
+                    'co15',
+                    'co17',
+                    'co19',
+                    'co21',
+                ],
                 'uncoveredLinesIgnored' => [],
-                'percentage' => 100,
+                'percentage' => 75,
             ],
             [
                 'file' => 'src/Support/ConfigurationSourceDetector.php',
@@ -105,33 +111,40 @@ test('it can output to json', function () {
                 'file' => 'tests/Fixtures/Properties.php',
                 'uncoveredLines' => ['pr12'],
                 'uncoveredLinesIgnored' => [],
-                'percentage' => 83,
+                'percentage' => 87,
             ],
             [
                 'file' => 'tests/Fixtures/All.php',
                 'uncoveredLines' => [
-                    'pr12',
-                    'pa14',
-                    'pa14',
-                    'rt14',
+                    'co14',
+                    'pr16',
+                    'pa18',
+                    'pa18',
+                    'rt18',
                 ],
                 'uncoveredLinesIgnored' => [],
-                'percentage' => 0,
+                'percentage' => 12,
+            ],
+            [
+                'file' => 'tests/Fixtures/Constants.php',
+                'uncoveredLines' => ['co14'],
+                'uncoveredLinesIgnored' => [],
+                'percentage' => 87,
             ],
             [
                 'file' => 'tests/Fixtures/ReturnType.php',
                 'uncoveredLines' => ['rt12'],
                 'uncoveredLinesIgnored' => [],
-                'percentage' => 67,
+                'percentage' => 75,
             ],
             [
                 'file' => 'tests/Fixtures/Parameters.php',
                 'uncoveredLines' => ['pa12'],
                 'uncoveredLinesIgnored' => [],
-                'percentage' => 83,
+                'percentage' => 87,
             ],
         ],
-        'total' => 88.07,
+        'total' => 88.2,
     ]);
 
     unlink(__DIR__.'/../test.json');
