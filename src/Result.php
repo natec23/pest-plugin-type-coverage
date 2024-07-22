@@ -47,7 +47,7 @@ final class Result
         $filter = static fn (PHPStanError $error): bool => str_contains($error->getMessage(), 'property types')
             || str_contains($error->getMessage(), 'param types')
             || str_contains($error->getMessage(), 'return types')
-            || str_contains($error->getMessage(), 'constant types');
+            || (self::supportsConstantTypes() && str_contains($error->getMessage(), 'constant types'));
 
         $phpstanErrors = array_filter($phpstanErrors, $filter);
         $phpstanErrorsIgnored = array_filter($phpstanErrorsIgnored, $filter);
@@ -78,7 +78,7 @@ final class Result
                 $returnTypeCoverage = (int) explode(' ', explode('only ', $message)[1])[2];
             }
 
-            if (self::supportsConstantTypes() && str_contains($error->getMessage(), 'constant types')) {
+            if (str_contains($error->getMessage(), 'constant types')) {
                 $constantsCoverage = (int) explode(' ', explode('only ', $message)[1])[2];
             }
         }
@@ -105,6 +105,7 @@ final class Result
         }
 
         $rootPath = TestSuite::getInstance()->rootPath;
+
         $fallback = version_compare(PHP_VERSION, '8.3.0', '>=');
 
         $composerJson = json_decode(file_get_contents($rootPath.'/composer.json'), true);
@@ -119,7 +120,7 @@ final class Result
 
         $phpVersion = ltrim($composerJson['require']['php'], '^>=~');
 
-        $isOwnPackage = $composerJson['name'] ?? '' === 'pestphp/pest-plugin-type-coverage';
+        $isOwnPackage = ($composerJson['name'] ?? '') === 'pestphp/pest-plugin-type-coverage';
 
         return version_compare($phpVersion, '8.3.0', '>=') || $isOwnPackage;
     }
