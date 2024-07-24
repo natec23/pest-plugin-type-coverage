@@ -4,7 +4,7 @@ use Pest\TypeCoverage\Plugin;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 test('output', function () {
-    $output = new BufferedOutput();
+    $output = new BufferedOutput;
     $plugin = new class($output) extends Plugin
     {
         public function exit(int $code): never
@@ -24,7 +24,7 @@ test('output', function () {
 });
 
 test('it can output to json', function () {
-    $output = new BufferedOutput();
+    $output = new BufferedOutput;
     $plugin = new class($output) extends Plugin
     {
         public function exit(int $code): never

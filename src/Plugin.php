@@ -44,7 +44,7 @@ class Plugin implements HandlesArguments
     public function __construct(
         private readonly OutputInterface $output
     ) {
-        $this->coverageLogger = new NullLogger();
+        $this->coverageLogger = new NullLogger;
     }
 
     /**
