@@ -78,6 +78,7 @@ final class PHPStanAnalyser
             true,
             false,
             true,
+            false,
         );
 
         $fileAnalyser = new FileAnalyser(
@@ -85,7 +86,7 @@ final class PHPStanAnalyser
             $nodeScopeResolver,
             $container->getService('defaultAnalysisParser'), // @phpstan-ignore-line
             $container->getByType(DependencyResolver::class),
-            new RuleErrorTransformer(),
+            new RuleErrorTransformer,
             $container->getByType(LocalIgnoresProcessor::class),
         );
 

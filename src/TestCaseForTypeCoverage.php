@@ -110,7 +110,7 @@ final class TestCaseForTypeCoverage extends RuleTestCase
         }
 
         $actualErrors = $analyserResult->getUnorderedErrors();
-        $ruleErrorTransformer = new RuleErrorTransformer();
+        $ruleErrorTransformer = new RuleErrorTransformer;
         if ($analyserResult->getCollectedData() !== []) {
             $ruleRegistry = new DirectRegistry($this->getRules());
             $nodeType = CollectedDataNode::class;
