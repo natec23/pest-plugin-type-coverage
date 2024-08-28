@@ -108,9 +108,9 @@ final class Result
 
         $fallback = version_compare(PHP_VERSION, '8.3.0', '>=');
 
-        $composerJson = json_decode(file_get_contents($rootPath.'/composer.json'), true);
+        $composerJson = json_decode((string) file_get_contents($rootPath.'/composer.json'), true);
 
-        if (! is_array ($composerJson) || ! array_key_exists('require', $composerJson)) {
+        if (! is_array($composerJson) || ! array_key_exists('require', $composerJson)) {
             return $fallback;
         }
 
